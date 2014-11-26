@@ -1,0 +1,4 @@
+mongo:
+    image: mongo:2.8
+    volumes:
+        - ./data/db:/data/db
