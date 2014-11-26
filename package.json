@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/neoziro/hooko/issues"
   },
-  "homepage": "https://github.com/neoziro/hooko"
+  "homepage": "https://github.com/neoziro/hooko",
+  "dependencies": {
+    "express": "^4.10.4",
+    "mongoose": "^3.8.19"
+  },
+  "devDependencies": {
+    "docker-host": "^3.0.0"
+  }
 }
