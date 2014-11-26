@@ -1,0 +1,19 @@
+{
+  "name": "hooko",
+  "version": "1.0.0",
+  "description": "Configurable Web Hook server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neoziro/hooko.git"
+  },
+  "author": "Greg Bergé <berge.greg@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neoziro/hooko/issues"
+  },
+  "homepage": "https://github.com/neoziro/hooko"
+}
