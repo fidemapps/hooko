@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var pkg = require('../package.json');
+
+program
+  .version(pkg.version)
+  .command('db:drop')
+  .action(require('../lib/cli/commands/db-drop'));
+
+program.parse(process.argv);
