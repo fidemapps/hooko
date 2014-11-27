@@ -1,6 +1,6 @@
-var supertest = require('supertest');
 var expect = require('chai').expect;
 var cli = require('../utils/cli');
+var request = require('../utils/request');
 
 describe('HTTP API bundles', function () {
   before(function (done) {
@@ -9,7 +9,7 @@ describe('HTTP API bundles', function () {
 
   describe('POST /api/bundles', function () {
     it('should return an error without name', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .post('/api/bundles')
       .send({})
       .expect(400)
@@ -20,7 +20,7 @@ describe('HTTP API bundles', function () {
     });
 
     it('should add the bundle', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .post('/api/bundles')
       .send({name: 'bundle01'})
       .expect(201)
@@ -30,7 +30,7 @@ describe('HTTP API bundles', function () {
 
   describe('GET /api/bundles', function () {
     it('should list bundles', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .get('/api/bundles')
       .expect(200)
       .expect(function (res) {
@@ -42,7 +42,7 @@ describe('HTTP API bundles', function () {
 
   describe('PATCH /api/bundles/:name', function () {
     it('should return an error with an invalid state', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .patch('/api/bundles/bundle01')
       .send({state: 'invalid state'})
       .expect(400)
@@ -53,7 +53,7 @@ describe('HTTP API bundles', function () {
     });
 
     it('should modify the bundle', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .patch('/api/bundles/bundle01')
       .send({state: 'paused'})
       .expect(200)
@@ -66,14 +66,14 @@ describe('HTTP API bundles', function () {
 
   describe('DELETE /api/bundles/:name', function () {
     it('should destroy the bundle', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .delete('/api/bundles/bundle01')
       .expect(200)
       .end(done);
     });
 
     it('should return an empty list', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .get('/api/bundles')
       .expect(200)
       .expect(function (res) {

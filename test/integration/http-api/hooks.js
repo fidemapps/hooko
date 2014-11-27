@@ -1,6 +1,7 @@
 var supertest = require('supertest');
 var expect = require('chai').expect;
 var cli = require('../utils/cli');
+var request = require('../utils/request');
 
 describe('HTTP API hooks', function () {
   before(function (done) {
@@ -8,15 +9,15 @@ describe('HTTP API hooks', function () {
   });
 
   before(function (done) {
-    supertest('http://localhost:3000')
-      .post('/api/bundles')
-      .send({name: 'bundle01'})
-      .end(done);
+    request()
+    .post('/api/bundles')
+    .send({name: 'bundle01'})
+    .end(done);
   });
 
   describe('POST /api/bundles/:bundle/hooks', function () {
     it('should return an error without name', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .post('/api/bundles/bundle01/hooks')
       .send({})
       .expect(400)
@@ -27,7 +28,7 @@ describe('HTTP API hooks', function () {
     });
 
     it('should add the hook', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .post('/api/bundles/bundle01/hooks')
       .send({name: 'hook01', url: 'http://google.com'})
       .expect(201)
@@ -37,7 +38,7 @@ describe('HTTP API hooks', function () {
 
   describe('GET /api/bundles/:bundle/hooks', function () {
     it('should list hooks', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .get('/api/bundles/bundle01/hooks')
       .expect(200)
       .expect(function (res) {
@@ -51,7 +52,7 @@ describe('HTTP API hooks', function () {
     var hookId;
 
     before(function (done) {
-      supertest('http://localhost:3000')
+      request()
       .get('/api/bundles/bundle01/hooks')
       .end(function (err, res) {
         if (err) return done(err);
@@ -61,7 +62,7 @@ describe('HTTP API hooks', function () {
     });
 
     it('should return an error without name', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .patch('/api/bundles/bundle01/hooks/' + hookId)
       .send({name: null})
       .expect(400)
@@ -72,7 +73,7 @@ describe('HTTP API hooks', function () {
     });
 
     it('should update the hook', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .patch('/api/bundles/bundle01/hooks/' + hookId)
       .send({name: 'hook02'})
       .expect(200)
@@ -87,7 +88,7 @@ describe('HTTP API hooks', function () {
     var hookId;
 
     before(function (done) {
-      supertest('http://localhost:3000')
+      request()
       .get('/api/bundles/bundle01/hooks')
       .end(function (err, res) {
         if (err) return done(err);
@@ -97,14 +98,14 @@ describe('HTTP API hooks', function () {
     });
 
     it('should destroy the bundle', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .delete('/api/bundles/bundle01/hooks/' + hookId)
       .expect(200)
       .end(done);
     });
 
     it('should return an empty list', function (done) {
-      supertest('http://localhost:3000')
+      request()
       .get('/api/bundles/bundle01/hooks')
       .expect(200)
       .expect(function (res) {

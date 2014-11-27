@@ -26,6 +26,7 @@
     "commander": "^2.5.0",
     "express": "^4.10.4",
     "express-err": "^0.1.2",
+    "lodash": "^2.4.1",
     "mongoose": "^3.8.19"
   },
   "devDependencies": {
