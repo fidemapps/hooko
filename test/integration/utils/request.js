@@ -7,5 +7,5 @@ var supertest = require('supertest');
  */
 
 module.exports = function () {
-  return supertest('http://localhost:3000');
+  return supertest(process.env.HOOKO_API_URL);
 };

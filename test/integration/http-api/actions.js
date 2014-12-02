@@ -1,8 +1,15 @@
 var expect = require('chai').expect;
 var cli = require('../utils/cli');
 var request = require('../utils/request');
+var random = require('../utils/random');
 
 describe('HTTP API actions', function () {
+  var bundle;
+
+  before(function () {
+    bundle = random.bundle();
+  });
+
   before(function (done) {
     cli.run('db:drop', done);
   });
@@ -10,7 +17,7 @@ describe('HTTP API actions', function () {
   before(function (done) {
     request()
       .post('/api/bundles')
-      .send({name: 'bundle01'})
+      .send({name: bundle})
       .end(done);
   });
 
@@ -40,10 +47,10 @@ describe('HTTP API actions', function () {
     it('should add action', function (done) {
       request()
       .post('/api/actions')
-      .send({bundle: 'bundle01', name: 'push', body: 'test'})
+      .send({bundle: bundle, name: 'push', body: 'test'})
       .expect(201)
       .expect(function (res) {
-        expect(res).to.have.deep.property('body.bundle.name', 'bundle01');
+        expect(res).to.have.deep.property('body.bundle.name', bundle);
         expect(res).to.have.deep.property('body.name', 'push');
         expect(res).to.have.deep.property('body.body', 'test');
         expect(res).to.have.deep.property('body.state', 'active');

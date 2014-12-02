@@ -7,7 +7,10 @@
     "test": "mocha"
   },
   "bin": {
-    "hooko": "./bin/hooko"
+    "hooko": "./bin/hooko",
+    "hooko-api": "./bin/hooko-api",
+    "hooko-scheduler": "./bin/hooko-scheduler",
+    "hooko-worker": "./bin/hooko-worker"
   },
   "repository": {
     "type": "git",
@@ -27,7 +30,10 @@
     "express": "^4.10.4",
     "express-err": "^0.1.2",
     "lodash": "^2.4.1",
-    "mongoose": "^3.8.19"
+    "mongoose": "^3.8.19",
+    "promise": "^6.0.1",
+    "superagent": "^0.21.0",
+    "ya-sqs": "^1.0.0"
   },
   "devDependencies": {
     "chai": "^1.10.0",

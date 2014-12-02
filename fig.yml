@@ -1,9 +1,27 @@
-app:
+api:
   build: .
   links:
     - db
   ports:
     - "3000:3000"
+  command: '/hooko/bin/hooko-api'
+  environment:
+    - AWS_REGION
+    - AWS_ACCESS_KEY
+    - AWS_SECRET
+    - QUEUE_URL
+
+worker:
+  build: .
+  links:
+    - db
+  command: '/hooko/bin/hooko-worker'
+  environment:
+    - AWS_REGION
+    - AWS_ACCESS_KEY
+    - AWS_SECRET
+    - QUEUE_URL
+
 db:
   image: mongo:2.8
   ports:

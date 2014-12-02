@@ -1,10 +1,9 @@
 FROM node:0.10.33
 
 # Add sources.
-ADD . /src
+ADD . /hooko
 
 # Install dependencies.
-RUN cd /src; npm install --production
+RUN cd /hooko; npm install --production
 
 EXPOSE 3000
-CMD ["/usr/local/bin/node", "/src/index.js"]
