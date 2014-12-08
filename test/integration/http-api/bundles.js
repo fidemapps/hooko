@@ -4,7 +4,6 @@ var request = require('../utils/request');
 var random = require('../utils/random');
 
 describe('HTTP API bundles', function () {
-
   describe('POST /api/bundles', function () {
     it('should return an error without name', function (done) {
       request()

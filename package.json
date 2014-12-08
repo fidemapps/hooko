@@ -38,6 +38,7 @@
   "devDependencies": {
     "chai": "^1.10.0",
     "docker-host": "^3.0.0",
+    "ip": "^0.3.2",
     "mocha": "^2.0.1",
     "supertest": "^0.15.0"
   }

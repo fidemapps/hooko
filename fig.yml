@@ -22,6 +22,17 @@ worker:
     - AWS_SECRET
     - QUEUE_NAME
 
+customworker:
+  build: .
+  links:
+    - db
+  command: '/hooko/bin/hooko-worker'
+  environment:
+    - AWS_REGION
+    - AWS_ACCESS_KEY
+    - AWS_SECRET
+    - QUEUE_NAME=hooko-custom
+
 db:
   image: mongo:2.8
   ports:
