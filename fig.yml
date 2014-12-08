@@ -9,7 +9,7 @@ api:
     - AWS_REGION
     - AWS_ACCESS_KEY
     - AWS_SECRET
-    - QUEUE_URL
+    - QUEUE_NAME
 
 worker:
   build: .
@@ -20,7 +20,7 @@ worker:
     - AWS_REGION
     - AWS_ACCESS_KEY
     - AWS_SECRET
-    - QUEUE_URL
+    - QUEUE_NAME
 
 db:
   image: mongo:2.8

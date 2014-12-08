@@ -13,7 +13,7 @@ To start the project you must specify several environment variables:
 - AWS_REGION
 - AWS_ACCESS_KEY
 - AWS_SECRET
-- QUEUE_URL
+- QUEUE_NAME
 
 ### Run database
 
