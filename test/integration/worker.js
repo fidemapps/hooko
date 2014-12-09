@@ -1,6 +1,7 @@
 var express = require('express');
 var ip = require('ip');
 var request = require('./utils/request');
+var random = require('./utils/random');
 
 describe('Worker', function () {
   var app, serverUrl;
@@ -17,7 +18,7 @@ describe('Worker', function () {
     var bundleName;
 
     before(function generateRandomBundleName() {
-      bundleName = 'worker-test-bundle-' + Math.round(Math.random() * 5000);
+      bundleName = random.bundle();
     });
 
     before(function addBundle(done) {
@@ -55,7 +56,7 @@ describe('Worker', function () {
     var bundleName;
 
     before(function generateRandomBundleName() {
-      bundleName = 'worker-test-bundle-' + Math.round(Math.random() * 5000);
+      bundleName = random.bundle();
     });
 
     before(function addBundle(done) {

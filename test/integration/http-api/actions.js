@@ -44,6 +44,29 @@ describe('HTTP API actions', function () {
       .end(done);
     });
 
+    describe('with a bundle in state stopped', function () {
+      var stoppedBundle;
+
+      before(function (done) {
+        stoppedBundle = random.bundle();
+        request()
+          .post('/api/bundles')
+          .send({name: stoppedBundle, state: 'stopped'})
+          .end(done);
+      });
+
+      it('should return an error', function (done) {
+        request()
+        .post('/api/actions')
+        .send({bundle: stoppedBundle, name: 'push', body: 'test'})
+        .expect(400)
+        .expect(function (res) {
+          expect(res).to.have.deep.property('body.error.message', 'Bundle stopped');
+        })
+        .end(done);
+      });
+    });
+
     it('should add action', function (done) {
       request()
       .post('/api/actions')
