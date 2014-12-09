@@ -36,6 +36,7 @@
     "ya-sqs": "^2.0.0"
   },
   "devDependencies": {
+    "body-parser": "^1.10.0",
     "chai": "^1.10.0",
     "docker-host": "^3.0.0",
     "ip": "^0.3.2",

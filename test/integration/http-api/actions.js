@@ -70,12 +70,18 @@ describe('HTTP API actions', function () {
     it('should add action', function (done) {
       request()
       .post('/api/actions')
-      .send({bundle: bundle, name: 'push', body: 'test'})
+      .send({
+        bundle: bundle,
+        name: 'push',
+        body: 'test',
+        headers: {'content-type': 'application/json'}
+      })
       .expect(201)
       .expect(function (res) {
         expect(res).to.have.deep.property('body.bundle.name', bundle);
         expect(res).to.have.deep.property('body.name', 'push');
         expect(res).to.have.deep.property('body.body', 'test');
+        expect(res).to.have.deep.property('body.headers.content-type', 'application/json');
         expect(res).to.have.deep.property('body.state', 'active');
       })
       .end(done);

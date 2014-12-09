@@ -1,5 +1,7 @@
+var expect = require('chai').expect;
 var express = require('express');
 var ip = require('ip');
+var bodyParser = require('body-parser');
 var request = require('./utils/request');
 var random = require('./utils/random');
 
@@ -8,6 +10,7 @@ describe('Worker', function () {
 
   before(function startServer(done) {
     app = express();
+    app.use(bodyParser.text());
     app.listen(0, function () {
       serverUrl = 'http://' + ip.address() + ':' + this.address().port;
       done();
@@ -77,13 +80,23 @@ describe('Worker', function () {
       this.timeout(5000);
 
       app.post('/test-custom', function (req, res) {
+        expect(req.body).to.equal('test');
+        expect(req.get('x-custom')).to.equal('foo');
         res.send('OK');
         done();
       });
 
       request()
       .post('/api/actions')
-      .send({bundle: bundleName, name: 'push', body: 'test'})
+      .send({
+        bundle: bundleName,
+        name: 'push',
+        body: 'test',
+        headers: {
+          'content-type': 'text/plain',
+          'x-custom': 'foo'
+        }
+      })
       .end(function (err) {
         if (err) return done(err);
       });
