@@ -88,6 +88,12 @@ Delete a hook.
 
 Trigger an action.
 
+### Database
+
+#### POST /api/db/reset
+
+Reset all database.
+
 ## Specifications
 
 - [Specifications](https://docs.google.com/document/d/1gWVtMaKpx0KGD6qQz9thlCWgTTffryhS4xJAEbo4Keg/edit?usp=sharing)
