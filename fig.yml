@@ -4,7 +4,7 @@ api:
     - db
   ports:
     - "3000:3000"
-  command: '/hooko/bin/hooko-api'
+  command: 'hooko-api'
   environment:
     - AWS_REGION
     - AWS_ACCESS_KEY
@@ -15,7 +15,7 @@ worker:
   build: .
   links:
     - db
-  command: '/hooko/bin/hooko-worker'
+  command: 'hooko-worker'
   environment:
     - AWS_REGION
     - AWS_ACCESS_KEY
@@ -26,7 +26,7 @@ customworker:
   build: .
   links:
     - db
-  command: '/hooko/bin/hooko-worker'
+  command: 'hooko-worker'
   environment:
     - AWS_REGION
     - AWS_ACCESS_KEY
