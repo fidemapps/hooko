@@ -39,7 +39,7 @@ describe('Worker', function () {
     });
 
     it('should make a request', function (done) {
-      this.timeout(5000);
+      this.timeout(20000);
 
       app.post('/test', function (req, res) {
         res.send('OK');
@@ -77,7 +77,7 @@ describe('Worker', function () {
     });
 
     it('should make a request', function (done) {
-      this.timeout(5000);
+      this.timeout(20000);
 
       app.post('/test-custom', function (req, res) {
         expect(req.body).to.equal('test');

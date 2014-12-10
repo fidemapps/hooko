@@ -37,7 +37,7 @@ describe('Scheduler', function () {
   it('should planify a failed action', function (done) {
     var call = 0;
 
-    this.timeout(10000);
+    this.timeout(20000);
 
     app.post('/test', function (req, res) {
       // First call (action added)
