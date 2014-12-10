@@ -33,6 +33,17 @@ customworker:
     - AWS_SECRET
     - QUEUE_NAME=hooko-custom
 
+scheduler:
+  build: .
+  links:
+    - db
+  command: 'hooko-scheduler'
+  environment:
+    - AWS_REGION
+    - AWS_ACCESS_KEY
+    - AWS_SECRET
+    - QUEUE_NAME
+
 db:
   image: mongo:2.8
   ports:
