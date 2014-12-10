@@ -6,4 +6,5 @@ services:
 before_script:
   - ./bin/hooko-api &
   - ./bin/hooko-scheduler &
+  - QUEUE_NAME=hooko-custom ./bin/hooko-worker &
   - ./bin/hooko-worker &
