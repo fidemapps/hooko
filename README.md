@@ -1,6 +1,6 @@
 # hooko
 
-[![Build Status](https://travis-ci.org/fidemapps/hooko.svg?branch=travis)](https://travis-ci.org/fidemapps/hooko)
+[![Build Status](https://travis-ci.org/fidemapps/hooko.svg?branch=master)](https://travis-ci.org/fidemapps/hooko)
 [![Dependency Status](https://david-dm.org/fidemapps/hooko.svg?theme=shields.io)](https://david-dm.org/fidemapps/hooko)
 [![devDependency Status](https://david-dm.org/fidemapps/hooko/dev-status.svg?theme=shields.io)](https://david-dm.org/fidemapps/hooko#info=devDependencies)
 
