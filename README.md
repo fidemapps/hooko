@@ -88,6 +88,10 @@ Delete a hook.
 
 ### Actions
 
+#### GET /api/actions?bundle&name&state
+
+List actions.
+
 #### POST /api/actions
 
 Trigger an action.
