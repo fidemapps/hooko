@@ -27,6 +27,7 @@
     "bunyan": "^1.2.3",
     "bunyan-request": "^1.1.0",
     "commander": "^2.5.0",
+    "cors": "^2.5.2",
     "express": "^4.10.4",
     "express-err": "^0.1.2",
     "lodash": "^2.4.1",
