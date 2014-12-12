@@ -4,11 +4,10 @@ var random = require('../utils/random');
 
 describe('HTTP API hooks', function () {
   describe('POST /api/bundles/:bundle/hooks', function () {
-    var hook, bundle;
+    var bundle;
 
     before(function addBundle(done) {
       bundle = random.bundle();
-      hook = random.hook();
 
       request()
       .post('/api/bundles')

@@ -51,7 +51,7 @@ describe('Scheduler', function () {
         done();
       }
 
-      call ++;
+      call++;
     });
 
     request()
