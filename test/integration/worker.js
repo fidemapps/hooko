@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var request = require('./utils/request');
 var random = require('./utils/random');
 
-describe.only('Worker', function () {
+describe('Worker', function () {
   var app, serverUrl;
 
   before(function startServer(done) {
