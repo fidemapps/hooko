@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/neoziro/hooko",
   "dependencies": {
-    "body-parser": "^1.9.3",
+    "body-parser": "^1.10.0",
     "bunyan": "^1.2.3",
     "bunyan-request": "^1.1.0",
     "commander": "^2.5.0",
@@ -37,7 +37,6 @@
     "ya-sqs": "^2.3.0"
   },
   "devDependencies": {
-    "body-parser": "^1.10.0",
     "chai": "^1.10.0",
     "docker-host": "^3.0.0",
     "ip": "^0.3.2",
