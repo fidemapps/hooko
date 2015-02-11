@@ -42,13 +42,14 @@ describe('Worker', function () {
       this.timeout(20000);
 
       app.post('/test', function (req, res) {
-        res.send('OK');
+        console.log(req.body);
+        res.status(200).json({status: 'ok'});
         done();
       });
 
       request()
         .post('/api/actions')
-        .send({bundle: bundleName, name: 'push', body: '{"test": "test"}'})
+        .send({bundle: bundleName, name: 'push', body: JSON.stringify({test: 'test'})})
         .end(function (err) {
           if (err) return done(err);
         });
@@ -82,8 +83,9 @@ describe('Worker', function () {
 
       app.post('/test-custom', function (req, res) {
         //expect(req.body).to.eql({test: 'test'});
+        console.log(req.body);
         expect(req.get('x-custom')).to.equal('foo');
-        res.send('OK');
+        res.status(200).json({status: 'ok'});
         done();
       });
 
@@ -92,7 +94,7 @@ describe('Worker', function () {
         .send({
           bundle: bundleName,
           name: 'push',
-          body: '{"test": "test"}',
+          body: JSON.stringify({test: 'test'}),
           headers: {
             'content-type': 'application/json',
             'x-custom': 'foo'

@@ -9,7 +9,7 @@ describe('Scheduler', function () {
 
   before(function startServer(done) {
     app = express();
-    app.use(bodyParser.text());
+    app.use(bodyParser.json());
     app.listen(0, function () {
       serverUrl = 'http://' + ip.address() + ':' + this.address().port;
       done();
@@ -40,14 +40,15 @@ describe('Scheduler', function () {
     this.timeout(20000);
 
     app.post('/test', function (req, res) {
+      console.log(req.body);
       // First call (action added)
       if (call === 0) {
         // Return 400 to put state to failed.
-        res.status(400).send();
+        res.status(400).json({status: 'failed'});
       }
       // Second call (action scheduled)
       else if (call === 1) {
-        res.send();
+        res.status(200).json({status: 'ok'});
         done();
       }
 
@@ -56,7 +57,7 @@ describe('Scheduler', function () {
 
     request()
       .post('/api/actions')
-      .send({bundle: bundleName, name: 'push', body: '{"test": "test"}'})
+      .send({bundle: bundleName, name: 'push', body: JSON.stringify({test: 'test'})})
       .end(function (err) {
         if (err) return done(err);
       });
