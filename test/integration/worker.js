@@ -10,7 +10,7 @@ describe('Worker', function () {
 
   before(function startServer(done) {
     app = express();
-    app.use(bodyParser.text());
+    app.use(bodyParser.json());
     app.listen(0, function () {
       serverUrl = 'http://' + ip.address() + ':' + this.address().port;
       done();
