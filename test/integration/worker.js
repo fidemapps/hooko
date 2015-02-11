@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var request = require('./utils/request');
 var random = require('./utils/random');
 
-describe('Worker', function () {
+describe.only('Worker', function () {
   var app, serverUrl;
 
   before(function startServer(done) {
@@ -77,10 +77,11 @@ describe('Worker', function () {
     });
 
     it('should make a request', function (done) {
+
       this.timeout(20000);
 
       app.post('/test-custom', function (req, res) {
-        expect(req.body).to.equal({test: 'test'});
+        expect(req.body).to.eql({test: 'test'});
         expect(req.get('x-custom')).to.equal('foo');
         res.send('OK');
         done();
