@@ -24,24 +24,24 @@ describe('HTTP API actions', function () {
   describe('POST /api/actions', function () {
     it('should return an error without name', function (done) {
       request()
-      .post('/api/actions')
-      .send({})
-      .expect(400)
-      .expect(function (res) {
-        expect(res).to.have.deep.property('body.error.message', 'Validation failed');
-      })
-      .end(done);
+        .post('/api/actions')
+        .send({})
+        .expect(400)
+        .expect(function (res) {
+          expect(res).to.have.deep.property('body.error.message', 'Validation failed');
+        })
+        .end(done);
     });
 
     it('should return an error without a valid bundle', function (done) {
       request()
-      .post('/api/actions')
-      .send({bundle: 'unknownBundle'})
-      .expect(400)
-      .expect(function (res) {
-        expect(res).to.have.deep.property('body.error.message', 'Bundle not found');
-      })
-      .end(done);
+        .post('/api/actions')
+        .send({bundle: 'unknownBundle'})
+        .expect(400)
+        .expect(function (res) {
+          expect(res).to.have.deep.property('body.error.message', 'Bundle not found');
+        })
+        .end(done);
     });
 
     describe('with a bundle in state stopped', function () {
@@ -57,34 +57,34 @@ describe('HTTP API actions', function () {
 
       it('should return an error', function (done) {
         request()
-        .post('/api/actions')
-        .send({bundle: stoppedBundle, name: 'push', body: 'test'})
-        .expect(400)
-        .expect(function (res) {
-          expect(res).to.have.deep.property('body.error.message', 'Bundle stopped');
-        })
-        .end(done);
+          .post('/api/actions')
+          .send({bundle: stoppedBundle, name: 'push', body: '{"test": "test"}'})
+          .expect(400)
+          .expect(function (res) {
+            expect(res).to.have.deep.property('body.error.message', 'Bundle stopped');
+          })
+          .end(done);
       });
     });
 
     it('should add action', function (done) {
       request()
-      .post('/api/actions')
-      .send({
-        bundle: bundle,
-        name: 'push',
-        body: 'test',
-        headers: {'content-type': 'application/json'}
-      })
-      .expect(201)
-      .expect(function (res) {
-        expect(res).to.have.deep.property('body.bundle.name', bundle);
-        expect(res).to.have.deep.property('body.name', 'push');
-        expect(res).to.have.deep.property('body.body', 'test');
-        expect(res).to.have.deep.property('body.headers.content-type', 'application/json');
-        expect(res).to.have.deep.property('body.state', 'active');
-      })
-      .end(done);
+        .post('/api/actions')
+        .send({
+          bundle: bundle,
+          name: 'push',
+          body: '{"test": "test"}',
+          headers: {'content-type': 'application/json'}
+        })
+        .expect(201)
+        .expect(function (res) {
+          expect(res).to.have.deep.property('body.bundle.name', bundle);
+          expect(res).to.have.deep.property('body.name', 'push');
+          expect(res).to.have.deep.property('body.body', '{"test": "test"}');
+          expect(res).to.have.deep.property('body.headers.content-type', 'application/json');
+          expect(res).to.have.deep.property('body.state', 'active');
+        })
+        .end(done);
     });
   });
 });
