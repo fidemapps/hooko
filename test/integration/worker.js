@@ -80,7 +80,7 @@ describe('Worker', function () {
       this.timeout(20000);
 
       app.post('/test-custom', function (req, res) {
-        expect(req.body).to.equal('{"test": "test"}');
+        expect(req.body).to.equal({test: 'test'});
         expect(req.get('x-custom')).to.equal('foo');
         res.send('OK');
         done();
