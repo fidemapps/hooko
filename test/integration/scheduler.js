@@ -55,10 +55,10 @@ describe('Scheduler', function () {
     });
 
     request()
-    .post('/api/actions')
-    .send({bundle: bundleName, name: 'push', body: 'test'})
-    .end(function (err) {
-      if (err) return done(err);
-    });
+      .post('/api/actions')
+      .send({bundle: bundleName, name: 'push', body: '{"test": "test"}'})
+      .end(function (err) {
+        if (err) return done(err);
+      });
   });
 });

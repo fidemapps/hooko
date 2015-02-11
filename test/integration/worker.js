@@ -47,11 +47,11 @@ describe('Worker', function () {
       });
 
       request()
-      .post('/api/actions')
-      .send({bundle: bundleName, name: 'push', body: 'test'})
-      .end(function (err) {
-        if (err) return done(err);
-      });
+        .post('/api/actions')
+        .send({bundle: bundleName, name: 'push', body: '{"test": "test"}'})
+        .end(function (err) {
+          if (err) return done(err);
+        });
     });
   });
 
@@ -87,19 +87,19 @@ describe('Worker', function () {
       });
 
       request()
-      .post('/api/actions')
-      .send({
-        bundle: bundleName,
-        name: 'push',
-        body: 'test',
-        headers: {
-          'content-type': 'text/plain',
-          'x-custom': 'foo'
-        }
-      })
-      .end(function (err) {
-        if (err) return done(err);
-      });
+        .post('/api/actions')
+        .send({
+          bundle: bundleName,
+          name: 'push',
+          body: '{"test": "test"}',
+          headers: {
+            'content-type': 'text/plain',
+            'x-custom': 'foo'
+          }
+        })
+        .end(function (err) {
+          if (err) return done(err);
+        });
     });
   });
 });
