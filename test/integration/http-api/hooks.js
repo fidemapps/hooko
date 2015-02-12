@@ -144,8 +144,8 @@ describe('HTTP API hooks', function () {
 
     it('should return an error if hook id does not exist', function (done) {
       request()
-        .get('/api/bundles/' + bundle + '/hooks/non-existent')
-        .expect(404)
+        .get('/api/bundles/' + bundle + '/hooks/non-existent/summary')
+        .expect(400)
         .end(done);
     });
 
