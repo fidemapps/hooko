@@ -52,7 +52,7 @@ env HOOKO_API_URL=http://0.0.0.0:3000 QUEUE_NAME=hooko-custom ./bin/hooko-worker
 ```
 
 ```
-npm test
+env HOOKO_API_URL=http://0.0.0.0:3000 npm test
 ```
 
 ## HTTP API
