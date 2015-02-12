@@ -45,7 +45,14 @@ Else you can run each process individually:
 To run tests, you must have a complete server running. Then you can run test using `npm test` and by specifying the API url:
 
 ```
-HOOKO_API_URL=http://0.0.0.0:3000 npm test
+./bin/hooko-api | bunyan
+env HOOKO_API_URL=http://0.0.0.0:3000 ./bin/hooko-worker | bunyan
+env HOOKO_API_URL=http://0.0.0.0:3000 ./bin/hooko-scheduler | bunyan
+env HOOKO_API_URL=http://0.0.0.0:3000 QUEUE_NAME=hooko-custom ./bin/hooko-worker | bunyan
+```
+
+```
+npm test
 ```
 
 ## HTTP API
