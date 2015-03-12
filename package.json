@@ -2,7 +2,6 @@
   "name": "hooko",
   "version": "1.0.0",
   "description": "Configurable Web Hook server.",
-  "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
